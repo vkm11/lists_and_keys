@@ -1,16 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <template v-for="name in names" :key="name">
+  <h2>{{ name }}</h2>
+  <input placeholder ="Last name" />
+  <hr />
+  </template>
+  <button @click="shuffle">Shuffle!</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import _ from "lodash";
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return{ 
+      names: ["Vijay", "Gokul","Prajwal","Nithin"],
+    };
+  },
+  methods: { 
+    shuffle(){ 
+      console.log(this.names);
+      this.names = _.shuffle(this.names);
+    }
   }
+
 }
 </script>
 
